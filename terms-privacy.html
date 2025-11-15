@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>三维笔记 · 服务条款与隐私政策 | 3D Slipbox · Terms &amp; Privacy</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg-light: #ffffff;
+      --bg-dark: #000000;
+      --fg-light: #111827;
+      --fg-dark: #f9fafb;
+      --border-light: #e5e7eb;
+      --border-dark: #374151;
+      --accent: #4f46e5;
+      --accent-soft-light: rgba(79, 70, 229, 0.06);
+      --accent-soft-dark: rgba(129, 140, 248, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, system-ui, -system-ui, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      background-color: var(--bg-light);
+      color: var(--fg-light);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.theme-dark {
+      background-color: var(--bg-dark);
+      color: var(--fg-dark);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      padding: 12px 24px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-light);
+      background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    body.theme-dark .top-bar {
+      border-bottom-color: var(--border-dark);
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .logo-wrapper {
+      position: relative;
+      width: 32px;
+      height: 32px;
+      flex-shrink: 0;
+    }
+
+    .logo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: none;
+    }
+
+    body.theme-light .logo--light {
+      display: block;
+    }
+
+    body.theme-dark .logo--dark {
+      display: block;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      font-size: 14px;
+      line-height: 1.2;
+    }
+
+    .brand-main {
+      font-weight: 600;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-left: 0;
+    }
+
+    .nav-link {
+      padding: 4px 8px;
+      font-size: 13px;
+      cursor: pointer;
+      border: none;
+      background: none;
+      text-decoration: none;
+      color: inherit;
+      white-space: nowrap;
+    }
+
+    .nav-link:hover {
+      text-decoration: underline;
+    }
+
+    .nav-link--active {
+      font-weight: 600;
+      color: inherit;
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-left: 24px;
+    }
+
+    .chip {
+      border-radius: 999px;
+      border: 1px solid var(--border-light);
+      padding: 4px 10px;
+      font-size: 12px;
+      background: transparent;
+      color: inherit;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 34px;
+    }
+
+    .chip--icon {
+      font-size: 14px;
+      padding-inline: 9px;
+      line-height: 1;
+    }
+
+    body.theme-dark .chip {
+      border-color: var(--border-dark);
+    }
+
+    main {
+      flex: 1;
+      padding: 24px 16px 40px;
+    }
+
+    .content-shell {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      margin-bottom: 18px;
+    }
+
+    .section-title {
+      margin: 0 0 4px;
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    .section-subtitle {
+      margin: 0;
+      font-size: 13px;
+      opacity: 0.7;
+    }
+
+    .section-card {
+      padding-top: 4px;
+    }
+
+    .section-hidden {
+      display: none;
+    }
+
+    .legal-content {
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .legal-content h2 {
+      margin: 1.4em 0 0.5em;
+      font-size: 18px;
+    }
+
+    .legal-content h2:first-child {
+      margin-top: 0;
+    }
+
+    .legal-content h3 {
+      margin: 1.1em 0 0.4em;
+      font-size: 15px;
+    }
+
+    .legal-content p {
+      margin: 0.4em 0 0.8em;
+    }
+
+    .legal-content ul {
+      margin: 0.3em 0 0.9em;
+      padding-left: 1.2em;
+    }
+
+    .legal-content li + li {
+      margin-top: 0.15em;
+    }
+
+    .footer {
+      padding: 12px 24px 18px;
+      font-size: 11px;
+      opacity: 0.6;
+      text-align: center;
+    }
+
+    [data-lang-text] {
+      display: none;
+    }
+
+    body.lang-zh [data-lang-text="zh"],
+    body.lang-en [data-lang-text="en"] {
+      display: inline;
+    }
+
+    @media (max-width: 720px) {
+      .top-bar {
+        grid-template-columns: 1fr;
+        row-gap: 8px;
+        align-items: flex-start;
+      }
+
+      .nav {
+        margin-left: 0;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .controls {
+        margin-left: 0;
+        width: 100%;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      main {
+        padding-top: 16px;
+      }
+    }
+  </style>
+</head>
+<body class="theme-light lang-zh">
+  <div class="page">
+    <header class="top-bar">
+      <div class="brand">
+        <div class="logo-wrapper">
+          <!-- 使用你给出的绝对路径，确保本地打开时可以加载 -->
+          <img src="/Users/hubin/Downloads/logo/网站-浅色logo.png" alt="三维笔记 logo (浅色)" class="logo logo--light">
+          <img src="/Users/hubin/Downloads/logo/网站-深色logo.png" alt="3D Slipbox logo (深色)" class="logo logo--dark">
+        </div>
+        <div class="brand-text">
+          <span class="brand-main" data-lang-text="zh">三维笔记</span>
+          <span class="brand-main" data-lang-text="en">3D Slipbox</span>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a href="#terms" class="nav-link nav-link--active" data-section="terms">
+          <span data-lang-text="zh">服务条款</span>
+          <span data-lang-text="en">Terms of Service</span>
+        </a>
+        <a href="#privacy" class="nav-link" data-section="privacy">
+          <span data-lang-text="zh">隐私政策</span>
+          <span data-lang-text="en">Privacy Policy</span>
+        </a>
+      </nav>
+
+      <div class="controls">
+        <button type="button" class="chip" id="lang-toggle">English</button>
+        <button type="button" class="chip chip--icon" id="theme-toggle" aria-label="Toggle theme">🌙</button>
+      </div>
+    </header>
+
+    <main>
+      <div class="content-shell">
+        <section id="terms">
+          <header class="section-header">
+            <h1 class="section-title">
+              <span data-lang-text="zh">服务条款</span>
+              <span data-lang-text="en">Terms of Service</span>
+            </h1>
+            <p class="section-subtitle">
+              <span data-lang-text="zh">请在使用三维笔记前仔细阅读以下条款。</span>
+              <span data-lang-text="en">Please read these terms carefully before using 3D Slipbox.</span>
+            </p>
+          </header>
+          <div class="section-card">
+            <article class="legal-content">
+              <div data-lang-text="zh">
+                <h2>欢迎使用三维笔记</h2>
+                <p>感谢您选择<strong>三维笔记（3d slipbox）</strong>（以下简称“本软件”）。在开始使用前，请您仔细阅读并充分理解本《用户协议》（以下简称“本协议”）。您下载、安装或使用本软件的行为，即表示您同意接受本协议的全部约定。</p>
+
+                <h2>一、使用规则</h2>
+
+                <h3>1.1 账户与数据管理</h3>
+                <ul>
+                  <li>本软件无需注册账户即可使用核心功能。</li>
+                  <li>如您选择将数据同步至 iCloud，请确保您已正确配置苹果设备并登录有效的 iCloud 账户。相关数据同步功能依赖于苹果公司提供的服务，请您自行负责账户与设备的安全管理。</li>
+                </ul>
+
+                <h3>1.2 许可范围</h3>
+                <ul>
+                  <li>我们授予您一项个人使用的、非独占的、不可转让的许可，您可在遵守本协议的前提下使用本软件。</li>
+                  <li>您不得对本软件进行反向工程、解密、修改或创建衍生版本，亦不得尝试绕过本软件的任何功能限制。</li>
+                </ul>
+
+                <h3>1.3 用户行为规范</h3>
+                <ul>
+                  <li>您承诺仅将本软件用于合法目的，不得利用其从事任何违反法律法规或损害他人权益的行为。</li>
+                  <li>您应独立对使用本软件过程中创建、上传或存储的全部内容（包括但不限于笔记卡片、标签等）负责，确保其内容合法、正当。</li>
+                </ul>
+
+                <h2>二、知识产权</h2>
+
+                <h3>2.1 软件知识产权</h3>
+                <ul>
+                  <li>本软件及其相关组件（包括但不限于源代码、用户界面、设计、文档等）的全部知识产权均归本软件开发者所有。</li>
+                  <li>未经我们明确书面许可，您不得复制、传播、出租或非法使用本软件的任何部分。</li>
+                </ul>
+
+                <h3>2.2 用户内容权利</h3>
+                <ul>
+                  <li>您通过本软件创建的内容，其相关权利仍归属于您。我们承诺不主动访问、使用或披露您的个人数据，除非为提供基础服务或根据法律要求所必需。</li>
+                </ul>
+
+                <h2>三、责任限制</h2>
+
+                <h3>3.1 服务状态</h3>
+                <ul>
+                  <li>本软件按“现状”提供，在现有技术条件下所能达到的稳定性与完整性基础上运行。我们不保证服务持续不中断或无缺陷。</li>
+                  <li>除法律明确规定外，我们不对因使用或无法使用本软件所引发的任何直接或间接损失承担责任。</li>
+                </ul>
+
+                <h3>3.2 数据安全提示</h3>
+                <ul>
+                  <li>本软件默认将数据存储于您的设备本地，如您启用 iCloud 同步功能，数据将经由苹果公司提供的服务进行传输与存储。</li>
+                  <li>请您妥善保管设备及 iCloud 账户信息，采取合理措施防范数据泄露或丢失风险。</li>
+                </ul>
+
+                <h2>四、协议修改与终止</h2>
+
+                <h3>4.1 协议更新</h3>
+                <ul>
+                  <li>我们保留适时修订本协议的权利。更新版本将在本软件内或官方网站公示，敬请定期查阅。</li>
+                  <li>若您在新条款生效后继续使用本软件，即视为接受修订后的全部内容。</li>
+                </ul>
+
+                <h3>4.2 服务终止</h3>
+                <ul>
+                  <li>您可随时停止使用本软件。</li>
+                  <li>如我们需终止本软件的运营，将提前通过适当方式通知您，并尽可能提供数据导出或备份的指引。</li>
+                </ul>
+
+                <h2>五、法律适用与争议解决</h2>
+
+                <h3>5.1 适用法律</h3>
+                <ul>
+                  <li>本协议的订立、效力与执行均适用您所在国家或地区相关法律法规。</li>
+                </ul>
+
+                <h3>5.2 争议解决方式</h3>
+                <ul>
+                  <li>因本协议引起的争议，双方应优先友好协商；协商不成的，任何一方均有权将争议提交至有管辖权的人民法院诉讼解决。</li>
+                </ul>
+
+                <h2>六、其他说明</h2>
+                <ul>
+                  <li>本协议最终解释权归本软件开发者所有。</li>
+                  <li>如本协议部分条款被认定为无效或不可执行，不影响其余条款的持续有效性。</li>
+                </ul>
+
+                <h2>联系我们</h2>
+                <p>如您对本协议或本软件有任何疑问或建议，请通过以下方式联系我们：</p>
+                <p>邮箱： <a href="mailto:3d.slipbox@gmail.com">3d.slipbox@gmail.com</a></p>
+              </div>
+
+              <div data-lang-text="en">
+                <h2>Welcome to 3D Slipbox</h2>
+                <p>Thank you for choosing <strong>3D Slipbox</strong> (hereinafter referred to as "the Software"). Before using the Software, please read and fully understand this User Agreement (hereinafter referred to as "the Agreement"). By downloading, installing, or using the Software, you agree to be bound by all terms and conditions of this Agreement.</p>
+
+                <h2>1. Usage Rules</h2>
+
+                <h3>1.1 Account and Data Management</h3>
+                <ul>
+                  <li>The core functions of the Software can be used without registering an account.</li>
+                  <li>If you choose to synchronize data to iCloud, please ensure that your Apple device is correctly configured and that you are logged into a valid iCloud account. The data synchronization feature relies on services provided by Apple Inc., and you are solely responsible for the security of your account and device.</li>
+                </ul>
+
+                <h3>1.2 License Scope</h3>
+                <ul>
+                  <li>We grant you a personal, non-exclusive, non-transferable license to use the Software in compliance with this Agreement.</li>
+                  <li>You shall not reverse engineer, decrypt, modify, or create derivative versions of the Software, nor attempt to bypass any functional restrictions of the Software.</li>
+                </ul>
+
+                <h3>1.3 User Conduct</h3>
+                <ul>
+                  <li>You agree to use the Software solely for lawful purposes and shall not engage in any activities that violate applicable laws or infringe upon the rights of others.</li>
+                  <li>You are solely responsible for all content created, uploaded, or stored through the Software (including but not limited to note cards, tags, etc.), ensuring its legality and appropriateness.</li>
+                </ul>
+
+                <h2>2. Intellectual Property</h2>
+
+                <h3>2.1 Software Intellectual Property</h3>
+                <ul>
+                  <li>All intellectual property rights in the Software and its components (including but not limited to source code, user interface, design, and documentation) are owned by the Software developer.</li>
+                  <li>Without our explicit written permission, you may not copy, distribute, rent, or illegally use any part of the Software.</li>
+                </ul>
+
+                <h3>2.2 User Content Rights</h3>
+                <ul>
+                  <li>The rights to content created by you through the Software remain with you. We commit not to actively access, use, or disclose your personal data, except as necessary to provide basic services or as required by law.</li>
+                </ul>
+
+                <h2>3. Limitation of Liability</h2>
+
+                <h3>3.1 Service Status</h3>
+                <ul>
+                  <li>The Software is provided on an "as-is" basis, operating within the stability and integrity achievable under current technological conditions. We do not guarantee uninterrupted or error-free service.</li>
+                  <li>Except as expressly required by law, we shall not be liable for any direct or indirect losses arising from the use or inability to use the Software.</li>
+                </ul>
+
+                <h3>3.2 Data Security Notice</h3>
+                <ul>
+                  <li>By default, data is stored locally on your device. If you enable iCloud synchronization, data will be transmitted and stored through services provided by Apple Inc.</li>
+                  <li>Please safeguard your device and iCloud account information and take reasonable measures to prevent data leakage or loss.</li>
+                </ul>
+
+                <h2>4. Agreement Modification and Termination</h2>
+
+                <h3>4.1 Agreement Updates</h3>
+                <ul>
+                  <li>We reserve the right to amend this Agreement at any time. Updated versions will be published within the Software or on our official website. Please review periodically.</li>
+                  <li>Continued use of the Software after the updated terms take effect constitutes your acceptance of the revised Agreement.</li>
+                </ul>
+
+                <h3>4.2 Service Termination</h3>
+                <ul>
+                  <li>You may stop using the Software at any time.</li>
+                  <li>If we decide to discontinue the Software, we will notify you in advance through appropriate channels and provide guidance on data export or backup where possible.</li>
+                </ul>
+
+                <h2>5. Governing Law and Dispute Resolution</h2>
+
+                <h3>5.1 Applicable Law</h3>
+                <ul>
+                  <li>The formation, validity, and execution of this Agreement shall be governed by the laws of your country or region.</li>
+                </ul>
+
+                <h3>5.2 Dispute Resolution</h3>
+                <ul>
+                  <li>Any dispute arising from this Agreement shall first be resolved through friendly negotiations. If negotiations fail, either party may submit the dispute to the competent people's court for litigation.</li>
+                </ul>
+
+                <h2>6. Miscellaneous</h2>
+                <ul>
+                  <li>The final interpretation right of this Agreement belongs to the Software developer.</li>
+                  <li>If any provision of this Agreement is deemed invalid or unenforceable, the remaining provisions shall continue in full force and effect.</li>
+                </ul>
+
+                <h2>Contact Us</h2>
+                <p>If you have any questions or suggestions regarding this Agreement or the Software, please contact us at:</p>
+                <p>Email: <a href="mailto:3d.slipbox@gmail.com">3d.slipbox@gmail.com</a></p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="privacy" class="section-hidden">
+          <header class="section-header">
+            <h1 class="section-title">
+              <span data-lang-text="zh">隐私政策</span>
+              <span data-lang-text="en">Privacy Policy</span>
+            </h1>
+            <p class="section-subtitle">
+              <span data-lang-text="zh">了解三维笔记如何处理您的数据与隐私。</span>
+              <span data-lang-text="en">Understand how 3D Slipbox handles your data and privacy.</span>
+            </p>
+          </header>
+          <div class="section-card">
+            <article class="legal-content">
+              <div data-lang-text="zh">
+                <h2>引言</h2>
+                <p>感谢您选择使用<strong>三维笔记（3d slipbox）</strong>（以下简称“本应用”）。我们深知隐私保护的重要性，并始终致力于通过透明、合规的方式处理您的数据。本隐私政策将明确说明本应用的数据处理方式、您的权利及我们的安全承诺。</p>
+
+                <h2>一、数据处理原则</h2>
+
+                <h3>1. 本地化存储为核心</h3>
+                <ul>
+                  <li>所有由您创建的数据（包括笔记、卡片及设置）默认仅存储在您的设备本地，无需联网即可使用全部功能。</li>
+                  <li>数据访问权完全由您控制，仅您本人或您授权的设备可访问这些信息。</li>
+                </ul>
+
+                <h3>2. 可选的 iCloud 同步服务</h3>
+                <ul>
+                  <li>若您主动启用 iCloud 同步功能，本应用会将您的笔记内容加密后传输至您个人的 iCloud 账户。此功能基于苹果公司的云服务实现，我们仅通过其合法接口进行数据同步。</li>
+                  <li>我们不会访问、收集或使用您 iCloud 中的任何其他数据（如通讯录、照片等）。</li>
+                </ul>
+
+                <h3>3. 无需个人信息即可使用</h3>
+                <ul>
+                  <li>本应用不收集、不存储、不传输任何个人信息（包括但不限于姓名、邮箱、手机号、地理位置等）。</li>
+                  <li>我们不嵌入任何分析工具、广告 SDK 或追踪技术（如 Cookies、第三方统计代码等），确保您的使用行为完全私密。</li>
+                </ul>
+
+                <h3>4. 用户主导的数据控制权</h3>
+                <ul>
+                  <li>您可随时在应用内创建、编辑、删除或导出笔记内容。</li>
+                  <li>对于已同步至 iCloud 的数据，您可通过苹果设备的 iCloud 设置自主管理（如关闭同步、删除备份等）。</li>
+                </ul>
+
+                <h2>二、安全措施</h2>
+                <ol>
+                  <li>本地数据保护：本应用依赖设备系统权限（如解锁密码、生物识别）限制未授权访问。</li>
+                  <li>云端传输加密：同步至 iCloud 的数据均受苹果公司提供的 SSL/TLS 加密技术保护，符合行业安全标准。</li>
+                  <li>用户责任提示：请妥善保管您的设备及解锁凭证，避免因设备丢失或密码泄露导致数据风险。</li>
+                </ol>
+
+                <h2>三、第三方服务声明</h2>
+                <p>本应用为独立运营的软件，不集成任何第三方服务（如广告、社交登录、支付等）。与 iCloud 的交互仅用于实现您主动选择的数据同步功能，我们不会以任何形式与其他服务共享数据。</p>
+
+                <h2>四、适用范围</h2>
+                <p>本政策适用于本应用的所有版本（包括免费版与付费版）及全部用户，无论您通过何种渠道获取或使用本应用。</p>
+
+                <h2>五、您的权利</h2>
+                <p>您始终享有以下权利：</p>
+                <ul>
+                  <li>完全控制应用内数据：自由操作笔记内容，无需我们干预。</li>
+                  <li>自主管理同步数据：通过 iCloud 设置直接控制云端存储。</li>
+                  <li>随时终止使用：卸载本应用即终止数据处理，无需额外通知。</li>
+                </ul>
+
+                <h2>六、政策更新</h2>
+                <p>我们可能不定期修订本政策，修订内容将通过应用内公告或更新版本提示。若您继续使用本应用，视为接受更新后的条款。</p>
+
+                <h2>七、联系我们</h2>
+                <p>如对隐私政策或数据处理有任何疑问，请通过以下方式反馈：</p>
+                <p>邮箱： <a href="mailto:3d.slipbox@gmail.com">3d.slipbox@gmail.com</a></p>
+                <p>本政策最后更新于 2025 年 11 月 15 日。</p>
+              </div>
+
+              <div data-lang-text="en">
+                <h2>Introduction</h2>
+                <p>Thank you for choosing to use <strong>3D Slipbox</strong> (hereinafter referred to as "this App"). We deeply value your privacy and are committed to handling your data in a transparent and compliant manner. This Privacy Policy aims to clearly explain how this App processes your data, your rights, and our security commitments.</p>
+
+                <h2>1. Data Processing Principles</h2>
+
+                <h3>1.1 Local Storage as the Core</h3>
+                <ul>
+                  <li>All data created by you (including notes, cards, and settings) is, by default, stored only locally on your device. All features can be used without an internet connection.</li>
+                  <li>Access to this data is entirely under your control, and only you or devices you have authorized can access this information.</li>
+                </ul>
+
+                <h3>1.2 Optional iCloud Sync Service</h3>
+                <ul>
+                  <li>If you actively enable the iCloud synchronization feature, this App will encrypt your note content and transmit it to your personal iCloud account. This functionality is based on Apple's cloud services, and we only use its legitimate interfaces for data synchronization.</li>
+                  <li>We do not access, collect, or use any other data from your iCloud (such as contacts, photos, etc.).</li>
+                </ul>
+
+                <h3>1.3 No Personal Information Required for Use</h3>
+                <ul>
+                  <li>This App does not collect, store, or transmit any personal information (including but not limited to name, email address, phone number, geographical location, etc.).</li>
+                  <li>We do not embed any analytics tools, advertising SDKs, or tracking technologies (such as cookies, third-party analytics code, etc.), ensuring your usage is entirely private.</li>
+                </ul>
+
+                <h3>1.4 User-Led Data Control</h3>
+                <ul>
+                  <li>You can create, edit, delete, or export your note content within the App at any time.</li>
+                  <li>For data already synced to iCloud, you can manage it independently (e.g., turn off sync, delete backups) through your Apple device's iCloud settings.</li>
+                </ul>
+
+                <h2>2. Security Measures</h2>
+                <ol>
+                  <li>Local Data Protection: This App relies on device system permissions (such as unlock passwords or biometric authentication) to restrict unauthorized access.</li>
+                  <li>Cloud Transmission Encryption: Data synced to iCloud is protected by SSL/TLS encryption technology provided by Apple, complying with industry security standards.</li>
+                  <li>User Responsibility Notice: Please safeguard your device and unlock credentials to prevent data risks arising from device loss or password leakage.</li>
+                </ol>
+
+                <h2>3. Third-Party Services Declaration</h2>
+                <p>This App is independently operated software and does not integrate any third-party services (such as advertising, social logins, payment systems, etc.). Interaction with iCloud is solely for the purpose of the synchronization function you actively choose. We do not share data with any other services in any form.</p>
+
+                <h2>4. Scope of Application</h2>
+                <p>This policy applies to all versions of this App (including free and paid versions) and all users, regardless of the channel through which you obtained or use the App.</p>
+
+                <h2>5. Your Rights</h2>
+                <p>You always have the following rights:</p>
+                <ul>
+                  <li>Full control over in-App data: Freely operate your note content without our intervention.</li>
+                  <li>Autonomous management of synced data: Directly control cloud storage through your iCloud settings.</li>
+                  <li>Terminate use at any time: Uninstalling the App terminates data processing, requiring no additional notice.</li>
+                </ul>
+
+                <h2>6. Policy Updates</h2>
+                <p>We may revise this policy from time to time. Updated content will be announced within the App or prompted via version updates. Your continued use of the App after such changes constitutes acceptance of the updated terms.</p>
+
+                <h2>7. Contact Us</h2>
+                <p>If you have any questions regarding this Privacy Policy or data processing, please provide feedback via:</p>
+                <p>Email: <a href="mailto:3d.slipbox@gmail.com">3d.slipbox@gmail.com</a></p>
+                <p>This policy was last updated on November 15, 2025.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <span data-lang-text="zh">三维笔记（3D Slipbox）· 本页面仅用于展示服务条款与隐私政策。</span>
+      <span data-lang-text="en">3D Slipbox · This page is for displaying Terms of Service and Privacy Policy only.</span>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      const body = document.body;
+      const navLinks = Array.from(document.querySelectorAll(".nav-link"));
+      const sections = {
+        terms: document.getElementById("terms"),
+        privacy: document.getElementById("privacy")
+      };
+
+      const langButton = document.getElementById("lang-toggle");
+      const themeButton = document.getElementById("theme-toggle");
+
+      const LANG_KEY = "3d-slipbox-lang";
+      const THEME_KEY = "3d-slipbox-theme";
+
+      function updateLangButtonLabel(lang) {
+        if (!langButton) return;
+        // 当前为中文界面时，按钮显示 English；当前为英文界面时，按钮显示 中文
+        langButton.textContent = lang === "zh" ? "English" : "中文";
+      }
+
+      function updateThemeButtonIcon(theme) {
+        if (!themeButton) return;
+        // light 模式显示月亮（🌙），dark 模式显示太阳（☀️）
+        themeButton.textContent = theme === "light" ? "🌙" : "☀️";
+      }
+
+      function setLang(lang) {
+        body.classList.remove("lang-zh", "lang-en");
+        body.classList.add("lang-" + lang);
+        updateLangButtonLabel(lang);
+        try {
+          localStorage.setItem(LANG_KEY, lang);
+        } catch (e) {}
+      }
+
+      function setTheme(theme) {
+        body.classList.remove("theme-light", "theme-dark");
+        body.classList.add("theme-" + theme);
+        updateThemeButtonIcon(theme);
+        try {
+          localStorage.setItem(THEME_KEY, theme);
+        } catch (e) {}
+      }
+
+      function activateSection(sectionName) {
+        Object.keys(sections).forEach(function (name) {
+          const el = sections[name];
+          if (!el) return;
+          el.classList.toggle("section-hidden", name !== sectionName);
+        });
+        navLinks.forEach(function (link) {
+          const sec = link.getAttribute("data-section");
+          link.classList.toggle("nav-link--active", sec === sectionName);
+        });
+      }
+
+      function initFromStorageOrSystem() {
+        let lang = "zh";
+        let theme = "light";
+
+        try {
+          const savedLang = localStorage.getItem(LANG_KEY);
+          if (savedLang === "zh" || savedLang === "en") {
+            lang = savedLang;
+          }
+        } catch (e) {}
+
+        try {
+          const savedTheme = localStorage.getItem(THEME_KEY);
+          if (savedTheme === "light" || savedTheme === "dark") {
+            theme = savedTheme;
+          } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            theme = "dark";
+          }
+        } catch (e) {}
+
+        setLang(lang);
+        setTheme(theme);
+
+        let section = "terms";
+        if (location.hash === "#privacy") {
+          section = "privacy";
+        }
+        activateSection(section);
+      }
+
+      navLinks.forEach(function (link) {
+        link.addEventListener("click", function (event) {
+          event.preventDefault();
+          const target = this.getAttribute("data-section");
+          if (target) {
+            activateSection(target);
+            if (history && history.replaceState) {
+              history.replaceState(null, "", "#" + target);
+            } else {
+              location.hash = "#" + target;
+            }
+          }
+        });
+      });
+
+      if (langButton) {
+        langButton.addEventListener("click", function () {
+          const current = body.classList.contains("lang-zh") ? "zh" : "en";
+          const next = current === "zh" ? "en" : "zh";
+          setLang(next);
+        });
+      }
+
+      if (themeButton) {
+        themeButton.addEventListener("click", function () {
+          const current = body.classList.contains("theme-light") ? "light" : "dark";
+          const next = current === "light" ? "dark" : "light";
+          setTheme(next);
+        });
+      }
+
+      initFromStorageOrSystem();
+    })();
+  </script>
+</body>
+</html>
